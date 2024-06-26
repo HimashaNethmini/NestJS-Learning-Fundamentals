@@ -8,7 +8,7 @@ export class SongsController {
 
     @Post()
     create() {
-      return this.songsService.create('Animals by Bruno Mars');
+      return this.songsService.create('Thank you, Next by Ariana Grande');
     }
     @Get()
     findAll() {
