@@ -16,6 +16,8 @@ export class SongsService {
     //get crud
     findAll(){
         //fetch from database
+        //error handling
+        throw new Error('Error in DB');
         return this.songs;
     }
 
