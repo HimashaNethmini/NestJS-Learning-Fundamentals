@@ -9,14 +9,25 @@ import {
   HttpStatus,
   Param,
   ParseIntPipe,
+  Inject,
+  Scope
 } from '@nestjs/common';
 import { SongsService } from './songs.service';
 import { CreateSongs } from './dto/create-songs/create-songs';
+import { Connection } from 'src/common/constants/connection';
 
-@Controller('songs')
+@Controller({ path: 'songs', scope: Scope.REQUEST })
 export class SongsController {
   //writing a constructor to fetch from service
-  constructor(private songsService: SongsService) {}
+  constructor(
+    private songsService: SongsService,
+    @Inject('CONNECTION')
+    private connection: Connection,
+  ) 
+  {
+    console.log (`THIS IS CONNECTION STRING ${this.connection.CONNECTION_STRING}`,   
+    );
+  }
 
   @Post()
   create(@Body() CreateSongs: CreateSongs) {

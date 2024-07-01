@@ -9,7 +9,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SongsModule = void 0;
 const common_1 = require("@nestjs/common");
 const songs_controller_1 = require("./songs.controller");
-const songs_service_1 = require("./songs.service");
 const mockSongsService = {
     findAll() {
         return [{ id: 1, title: 'Lasting lover' }];
@@ -23,9 +22,9 @@ exports.SongsModule = SongsModule = __decorate([
         controllers: [songs_controller_1.SongsController],
         providers: [
             {
-                provide: songs_service_1.SongsService,
-                useValue: mockSongsService,
-            },
+                provide: 'CONNECTION',
+                useValue: 'connection'
+            }
         ],
     })
 ], SongsModule);
